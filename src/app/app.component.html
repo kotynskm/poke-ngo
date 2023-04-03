@@ -18,9 +18,18 @@
       type="search"
       placeholder="Search"
       aria-label="Search"
+      id="pokeName"
+      name="pokeName"
+      [(ngModel)]="pokeName"
     />
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <button class="btn btn-outline-success" type="submit" (click)="setValue()">
+      Search
+    </button>
   </form>
+</div>
+<div *ngIf="pokemon">
+  <h3>{{ pokeName | uppercase }}</h3>
+  <app-pokemon-details [pokemon]="pokemon"></app-pokemon-details>
 </div>
 <router-outlet></router-outlet>
 <footer class="footer"><h3>&copy; Kailey Kotynski 2023</h3></footer>

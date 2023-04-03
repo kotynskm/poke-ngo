@@ -11,11 +11,11 @@ export class PokemonService {
   constructor(private http: HttpClient) {}
 
   // api to get pokemon by name
-  private pokeUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
+  private pokeUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
-  getPokemon() {
+  getPokemon(name: string) {
     return this.http
-      .get(this.pokeUrl)
+      .get(this.pokeUrl + name)
       .pipe(
         tap((data) => console.log('This is the data,', JSON.stringify(data)))
       );
