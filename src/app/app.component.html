@@ -27,9 +27,10 @@
     </button>
   </form>
 </div>
-<div *ngIf="pokemon">
-  <h3>{{ pokeName | uppercase }}</h3>
+<div *ngIf="pokemon; else elseBlock">
+  <h3>Abilities</h3>
   <app-pokemon-details [pokemon]="pokemon"></app-pokemon-details>
 </div>
+<ng-template #elseBlock>Please enter a valid Pokemon name</ng-template>
 <router-outlet></router-outlet>
 <footer class="footer"><h3>&copy; Kailey Kotynski 2023</h3></footer>

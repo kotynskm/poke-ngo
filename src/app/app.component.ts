@@ -12,11 +12,17 @@ export class AppComponent {
   title = 'poke-ngo';
   pokeName: string = '';
   pokemon: any;
+  errorMessage: string = '';
 
   setValue(): void {
     console.log('The value is: ', this.pokeName);
-    this.pokeService
-      .getPokemon(this.pokeName)
-      .subscribe((res) => (this.pokemon = res));
+    this.pokeService.getPokemon(this.pokeName).subscribe({
+      next: (res) => {
+        this.pokemon = res;
+      },
+      error: (err) => (this.errorMessage = err),
+    });
+    this.pokeName = '';
+    this.pokemon = null;
   }
 }
